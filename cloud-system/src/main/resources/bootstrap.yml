@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    # 使用 dev 分支配置
+    active: dev
+  application:
+    # 应用名称
+    name: cloud-system-service
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8812 #Nacos配置中心地址
+        file-extension: yaml #文件拓展格式
+        enabled: true
+        namespace: d8b05ec6-0826-4b8e-a3b7-ecb442cdf358
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8812
+  scan:
+    base-packages: com.*.impl
+  consumer:
+    retries: 0
+    check: true
+  protocol:
+    name: dubbo
+    port: -1
+  provider:
+    payload: 838860800
+
+server:
+  port: 8005
+  #服务器配置
+  undertow:
+    # 设置IO线程数, 它主要执行非阻塞的任务,它们会负责多个连接, 默认设置每个CPU核心一个线程
+    # 阻塞任务线程池, 当执行类似servlet请求阻塞操作, undertow会从这个线程池中取得线程,它的值设置取决于系统的负载
+    # 以下的配置会影响buffer,这些buffer会用于服务器连接的IO操作,有点类似netty的池化内存管理
+    buffer-size: 1024
+    # 是否分配的直接内存
+    direct-buffers: true
+    threads:
+      io: 16
+      worker: 400

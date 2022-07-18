@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tjz</groupId>
+    <artifactId>cloudDemo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <modules>
+        <module>cloud-system</module>
+        <module>cloud-common</module>
+        <module>cloud-gateway</module>
+        <module>cloud-service-api</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <name>cloudDemo</name>
+    <description>Demo project for Spring Boot</description>
+
+    <developers>
+        <developer>
+            <name>Tian jinzan</name>
+            <email>tianjinzan01@inspur.com</email>
+            <organization>Inspur Genersoft Co., Ltd.</organization>
+        </developer>
+    </developers>
+
+    <properties>
+        <cloud.project.version>0.0.1-SNAPSHOT</cloud.project.version>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.plugin.version>2.7.1</maven.plugin.version>
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
+        <spring.cloud.alibaba>2.2.7.RELEASE</spring.cloud.alibaba>
+        <mybatis.plus.spring.boot>3.4.1</mybatis.plus.spring.boot>
+        <file.encoding>UTF-8</file.encoding>
+        <log4j2.version>2.17.1</log4j2.version>
+        <swagger2.version>2.8.0</swagger2.version>
+        <swagger-annotations.version>1.5.20</swagger-annotations.version>
+        <org.mapstruct.version>1.3.0.Final</org.mapstruct.version>
+        <hutool.version>5.7.0</hutool.version>
+        <jetcache-starter-redis.version>2.6.0</jetcache-starter-redis.version>
+        <disruptor.version>3.4.2</disruptor.version>
+        <!--注意这里 lombok 1.18.10 和 mapstruct 1.3.0.Final 匹配-->
+        <org.projectlombok.version>1.18.10</org.projectlombok.version>
+        <affinity.version>3.1.7</affinity.version>
+        <tio.version>3.5.5.v20191010-RELEASE</tio.version>
+        <joda-time.version>2.10.6</joda-time.version>
+    </properties>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>maven-zzy-snapshots-gsxm</id>
+            <url>https://repos.iec.io/repository/maven-zzy-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.swagger/swagger-annotations -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+        </dependency>
+        <!--注意这里 lombok 1.18.10 和 mapstruct 1.3.0.Final 匹配-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--springboot父依赖-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--springcloud父依赖-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--springcloudalibaba父依赖-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring.cloud.alibaba}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger-annotations.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.spring.boot}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-annotation</artifactId>
+                <version>${mybatis.plus.spring.boot}</version>
+            </dependency>
+
+            <!--mapStruct依赖 高性能对象映射-->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-jdk8</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${org.mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.alicp.jetcache/jetcache-starter-redis -->
+            <dependency>
+                <groupId>com.alicp.jetcache</groupId>
+                <artifactId>jetcache-starter-redis</artifactId>
+                <version>${jetcache-starter-redis.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
+            <dependency>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.t-io/tio-websocket-spring-boot-starter -->
+            <dependency>
+                <groupId>org.t-io</groupId>
+                <artifactId>tio-websocket-spring-boot-starter</artifactId>
+                <version>${tio.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${maven.plugin.version}</version>
+                <configuration>
+                    <!-- 如果没有该配置，devtools不会生效
+                    Maven 使用 运行自己的 jdk （maven 是需要依赖 jdk 存在的） 来进行 compiler ，
+                    如果不想使用这个默认的 jvm，就可以通过 fork 设置为true来实现。-->
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
